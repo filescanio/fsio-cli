@@ -1,5 +1,4 @@
 import aiofiles
-import colorama
 from typing import Dict, Tuple
 from core.logger import Logger
 from halo import Halo
@@ -19,28 +18,28 @@ class ReportFlow:
         spinner = Halo(text=f'Fetching a report ... ', placement='right')
         spinner.start()
 
-        report = await self.report.get_report(id, hash, filters, sorts, graph)
+        result = await self.report.get_report(id, hash, filters, sorts, graph)
 
-        if not report or 'reports' not in report:
+        if 'error' in result:
+            spinner.fail(result['error'])
+            return
+
+        reports: Dict = result['content']['reports']
+        flow_id = report['flowId'] if 'flowId' in report else ''
+        if len(reports.keys()) != 1:
             spinner.fail()
             return
-        else:
-            reports: Dict = report['reports']
-            flow_id = report['flowId'] if 'flowId' in report else ''
-            if len(reports.keys()) != 1:
-                spinner.fail()
-                return
 
-            spinner.succeed()
+        spinner.succeed()
 
-            if id not in reports:
-                return
+        if id not in reports:
+            return
 
-            report = reports[id]
-            report['id'] = id
-            report['flowId'] = flow_id
+        report = reports[id]
+        report['id'] = id
+        report['flowId'] = flow_id
 
-            self.logger.debug(self.formatter.format(report))
+        self.logger.debug(self.formatter.format(report))
 
 
     async def get_formatted_report(self, report_id: str, format: str, output):
@@ -50,9 +49,9 @@ class ReportFlow:
 
         report = await self.report.download_report(report_id, format)
 
-        if report:
+        if 'error' in report:
+            spinner.fail(report['error'])
+        else:
             spinner.succeed()
             async with aiofiles.open(output, 'w+' if isinstance(report, str) else 'wb') as writer:
-                await writer.write(report)
-        else:
-            spinner.fail()
+                await writer.write(report['content'])

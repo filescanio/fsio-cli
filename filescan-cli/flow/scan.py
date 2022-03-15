@@ -1,5 +1,4 @@
 import asyncio
-import json
 from typing import Optional, Dict
 from core.logger import Logger
 from halo import Halo
@@ -52,12 +51,16 @@ class ScanFlow:
         spinner = Halo(text=f'Uploading a file {file} ... ', spinner='dots', placement='right')
         spinner.start()
 
-        response = await self.scanner.upload(file, link, desc, tags, prop_tags,password, is_private)
+        result = await self.scanner.upload(file, link, desc, tags, prop_tags,password, is_private)
 
+        if 'error' in result:
+            spinner.fail(result['error'])
+            return
+
+        response = result['content']
         if 'flow_id' not in response:
-            self.logger.warning('Invalid response')
-            spinner.fail()
-            return None
+            spinner.fail('Invalid response')
+            return
 
         spinner.succeed()
 
@@ -73,9 +76,13 @@ class ScanFlow:
 
         while True:
             await asyncio.sleep(1)
-            
-            scan_report = await self.report.get_scan_reports(scan_id)
 
+            result = await self.report.get_scan_reports(scan_id)
+            if 'error' in result:
+                spinners['main'].fail(result['error'])
+                return
+
+            scan_report = result['content']
             if 'reports' not in scan_report or not scan_report['reports']:
                 continue
 
@@ -97,10 +104,14 @@ class ScanFlow:
             if 'allFinished' in scan_report and scan_report['allFinished']:
                 break
 
-
         if 'reports' in scan_report:
             spinners['main'].succeed()
-            return scan_report['reports']
+            result = []
+            for id in scan_report['reports']:
+                report = scan_report['reports'][id]
+                report['id'] = id
+                result.append(report)
+            return result
         else:
             spinners['main'].fail()
             return None

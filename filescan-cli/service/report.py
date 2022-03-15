@@ -47,7 +47,10 @@ class Report:
             }
         )
 
-        return json.loads(result)
+        if result['success']:
+            return { 'content': json.loads(result['content']) }
+        else:
+            return { 'error': result['content'] }
 
 
     async def get_reports(self, page: int, page_size: int) -> List:
@@ -61,11 +64,14 @@ class Report:
             params={ 'page': page, 'page_size': page_size }
         )
 
-        result = json.loads(result)
-        if not result or 'items' not in result:
-            return None
-
-        return result['items']
+        if result['success']:
+            result = json.loads(result['content'])
+            if 'items' not in result:
+                return { 'content': [] }
+            else:
+                return { 'content':result['items'] }
+        else:
+            return { 'error': result['content'] }
 
 
     async def get_report(
@@ -85,7 +91,10 @@ class Report:
             }
         )
 
-        return json.loads(result)
+        if result['success']:
+            return { 'content': json.loads(result['content']) }
+        else:
+            return { 'error': result['content'] }
 
 
     async def search_reports(self, params: Dict) -> List:
@@ -99,11 +108,14 @@ class Report:
             params=params
         )
 
-        result = json.loads(result)
-        if not result or 'items' not in result:
-            return None
-
-        return result['items']
+        if result['success']:
+            result = json.loads(result['content'])
+            if 'items' not in result:
+                return { 'content': [], 'total': 0 }
+            else:
+                return { 'content':result['items'], 'total': result['count'] }
+        else:
+            return { 'error': result['content'] }
 
 
     async def download_report(self, report_id: str, format: str):
@@ -117,7 +129,7 @@ class Report:
             params={ 'format': format }
         )
 
-        if result == '':
-            return None
-
-        return result
+        if result['success']:
+            return { 'content': result['content'] }
+        else:
+            return { 'error': result['content'] }

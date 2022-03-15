@@ -1,5 +1,6 @@
 import aiohttp
 import asyncio
+import json
 from aiohttp.http_exceptions import HttpProcessingError
 from typing import Any, Dict
 from common.singleton import Singleton
@@ -48,11 +49,11 @@ class HttpRequests(metaclass=Singleton):
                 url, data=form_data, headers={**headers, **body_headers}
             ) as response:
 
-                json = await response.text()
+                result = await response.text()
                 if response.status >= 200 and response.status < 300:
-                    return json
+                    return result
                 else:
-                    raise HttpProcessingError(code=response.status, message=json)
+                    raise Exception(json.loads(result)['detail'])
 
 
     async def get_multiple(self, data):
@@ -90,7 +91,10 @@ class HttpRequests(metaclass=Singleton):
             else:
                 result = await response.read()
 
-            return result
+            if response.status >= 200 and response.status < 300:
+                return result
+
+            raise Exception(json.loads(await response.text())['detail'])
 
 
     def __getConnector(self):
