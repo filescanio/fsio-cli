@@ -7,7 +7,6 @@ GET_FORMATTED_REPORT = '/api/reports/{report_id}/download'
 GET_SPECIFIC_REPORT = '/api/reports/{report_id}/{file_hash}'
 GET_REPORTS = '/api/users/uploads'
 
-GET_ALL_FILES = '/api/reports/{report_id}/files'
 DOWNLOAD_FILE = '/api/files/{file_hash}'
 
 SEARCH_REPORT = '/api/reports/search'

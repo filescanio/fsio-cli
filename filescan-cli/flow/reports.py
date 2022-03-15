@@ -3,7 +3,6 @@ from core.logger import Logger
 from halo import Halo
 from service.report import Report
 from formatter.reports import ReportsFormatter
-import json
 
 
 class ReportsFlow:
@@ -19,8 +18,13 @@ class ReportsFlow:
         spinner = Halo(text=f'Fetching reports ... ', placement='right')
         spinner.start()
 
-        scan_report = await self.report.get_scan_reports(scan_id, filters, sorts, graph)
+        result = await self.report.get_scan_reports(scan_id, filters, sorts, graph)
 
+        if 'error' in reports:
+            spinner.fail(result['error'])
+            return
+
+        scan_report = result['content']
         if 'allFinished' in scan_report and not scan_report['allFinished']:
             spinner.warn('Not finished yet')
             return
@@ -42,13 +46,13 @@ class ReportsFlow:
 
         reports = await self.report.get_reports(page, size)
 
-        if not reports:
-            spinner.fail()
+        if 'error' in reports:
+            spinner.fail(reports['error'])
             return
         else:
             spinner.succeed()
 
-        self.__view_reports(reports)
+        self.__view_reports(reports['content'])
 
 
     async def search(self, params: Dict[str, str]) -> List:
@@ -58,18 +62,16 @@ class ReportsFlow:
 
         reports = await self.report.search_reports(params)
 
-        if reports is None:
-            spinner.fail()
+        if 'error' in reports:
+            spinner.fail(reports['error'])
+            return
         else:
             spinner.succeed()
 
-        if not reports:
-            return
-
-        self.__view_reports(reports)
+        self.__view_reports(reports['content'], total=reports['total'])
 
 
-    def __view_reports(self, reports: List):
+    def __view_reports(self, reports: List, total=-1):
         """View reports"""
 
-        self.logger.debug(self.formatter.format(reports))
+        self.logger.debug(self.formatter.format(reports, total))

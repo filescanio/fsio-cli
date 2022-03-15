@@ -21,7 +21,10 @@ class System:
             headers=self.headers
         )
 
-        return json.loads(result)
+        if result['success']:
+            return { 'content': json.loads(result['content']) }
+        else:
+            return { 'error': result['content'] }
 
 
     async def get_config(self):
@@ -33,4 +36,7 @@ class System:
             headers=self.headers
         )
 
-        return json.loads(result)
+        if result['success']:
+            return { 'content': json.loads(result['content']) }
+        else:
+            return { 'error': result['content'] }

@@ -1,7 +1,7 @@
 from typing import Dict
 from .base import BaseFormatter
 from common.colors import colorize
-from ..utils import captialize_key, format_dict, format_string
+from ..utils import format_dict
 
 
 class GeoFormatter(BaseFormatter):

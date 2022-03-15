@@ -8,9 +8,12 @@ class ReportsFormatter:
     def __init__(self):
         pass
 
-    def format(self, reports: list) -> str:
+    def format(self, reports: list, total = -1) -> str:
 
-        result = ''
+        result = f'''
+            Total Count: {total}
+        ''' if total >= 0 else ''
+
         for report in reports:
             result += self.__format_report(report)
 
@@ -19,12 +22,16 @@ class ReportsFormatter:
 
     def __format_report(self, report: Dict) -> str:
 
+        type = report['file']['short_type'] if 'short_type' in report['file'] else report['file']['type']
+        tags = report['tags'] if 'tags' in report else report['allTags']
+        date = report['updated_date'] if 'updated_date' in report else report['created_date']
+        verdict = report['verdict'] if 'verdict' in report else report['finalVerdict']['verdict'].lower()
         return f'''
             id: {report['id']}
             name: {colorize(report['file']['name'])}
-            type: {report['file']['short_type']}
-            hash: {report['file']['sha256']}
-            verdict: {format_verdict(report['verdict'])}
-            tags: {' '.join([format_tag(tag) for tag in report['tags']])}
-            updated: {report['updated_date']}
+            type: {type}
+            hash: {report['file']['hash']}
+            verdict: {format_verdict(verdict)}
+            tags: {' '.join([format_tag(tag) for tag in tags])}
+            updated: {date}
         '''
