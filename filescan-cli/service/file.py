@@ -1,5 +1,3 @@
-import json
-from typing import Dict
 from core.http import HttpRequests
 from common.utils import run_safe
 from .endpoints import DOWNLOAD_FILE, get_endpoint

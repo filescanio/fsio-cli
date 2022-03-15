@@ -1,7 +1,6 @@
 import aiohttp
 import asyncio
 import json
-from aiohttp.http_exceptions import HttpProcessingError
 from typing import Any, Dict
 from common.singleton import Singleton
 

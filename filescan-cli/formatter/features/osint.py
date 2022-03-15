@@ -2,7 +2,7 @@ from typing import Dict
 from .base import BaseFormatter
 from common.colors import colorize
 from ..types.osint_types import ResourceTypes
-from ..utils import captialize_key, format_dict, format_string, format_tags, format_verdict
+from ..utils import captialize_key, format_dict, format_tags, format_verdict
 
 
 class OsintFormatter(BaseFormatter):
