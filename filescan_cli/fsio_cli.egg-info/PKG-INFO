@@ -1,9 +1,21 @@
+Metadata-Version: 2.1
+Name: fsio-cli
+Version: 1.0.0
+Summary: Cli client for Filescan service
+Home-page: https://github.com/filescanio/fsio-cli
+Author: Andrii Naidenko
+Author-email: shlerp11@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 
 You can use this simple and powerful cli tool to access to the filescan service.
-
-## Installation
-
-  `pip install filscan_cli`
 
 ## Usage
   
@@ -47,18 +59,10 @@ In order to run the cli commands, you need to set the api key and service url to
 
 1. You can set the environment variables
 
-Unix:
 ```
-      export API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
-      export SERVICE_BASE_URL=https://www.filescan.i
+      export API_KEY=123495594`
+      export SERVICE_BASE_URL=123495594`
 ```
-
-Windows:
-```
-      set API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
-      set SERVICE_BASE_URL=https://www.filescan.i
-```
-
 2. You can pass the config file path with `--config` option to the command. The config file should be in json format.
 
 ```
@@ -69,9 +73,11 @@ Example json format
 
 ```
       {
-        "API_KEY": "cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22",
-        "SERVICE_BASE_URL": "https://www.filescan.io"
+        "API_KEY": "abcdefghiji",
+        "SERVICE_BASE_URL": "http://staging.filescan.io"
       }
 ```
 
   
+
+
