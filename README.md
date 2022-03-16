@@ -44,8 +44,8 @@ In order to run the cli commands, you need to set the api key and service url to
 1. You can set the environment variables
 
 ```
-      export API_KEY=123495594`
-      export SERVICE_BASE_URL=123495594`
+      export API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22`
+      export SERVICE_BASE_URL=https://www.filescan.io`
 ```
 2. You can pass the config file path with `--config` option to the command. The config file should be in json format.
 
@@ -57,8 +57,8 @@ Example json format
 
 ```
       {
-        "API_KEY": "abcdefghiji",
-        "SERVICE_BASE_URL": "http://staging.filescan.io"
+        "API_KEY": "cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22",
+        "SERVICE_BASE_URL": "https://www.filescan.io"
       }
 ```
 
