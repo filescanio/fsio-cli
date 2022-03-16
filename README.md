@@ -1,6 +1,10 @@
 
 You can use this simple and powerful cli tool to access to the filescan service.
 
+## Installation
+
+  `pip install filscan_cli`
+
 ## Usage
   
   `python filescan.py [OPTIONS] COMMAND`
