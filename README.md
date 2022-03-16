@@ -43,10 +43,18 @@ In order to run the cli commands, you need to set the api key and service url to
 
 1. You can set the environment variables
 
+Unix:
 ```
-      export API_KEY=`cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22`
-      export SERVICE_BASE_URL=`https://www.filescan.io`
+      export API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
+      export SERVICE_BASE_URL=https://www.filescan.i
 ```
+
+Windows:
+```
+      set API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
+      set SERVICE_BASE_URL=https://www.filescan.i
+```
+
 2. You can pass the config file path with `--config` option to the command. The config file should be in json format.
 
 ```
