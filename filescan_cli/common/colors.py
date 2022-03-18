@@ -5,6 +5,7 @@ colors = {
     'malicious': colorama.Fore.RED,
     'likely_malicious': colorama.Fore.RED,
     'suspicious': colorama.Fore.YELLOW,
+		'unknown': colorama.Fore.BLUE
 }
 
 

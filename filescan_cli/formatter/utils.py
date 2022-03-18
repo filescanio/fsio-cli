@@ -32,7 +32,11 @@ def format_verdict(verdict):
 
 
 def format_tag(tag):
-    verdict = tag['tag']['verdict']['verdict']
+    if 'tag' in tag and 'verdict' in tag['tag']:
+        verdict = tag['tag']['verdict']['verdict']
+    else:
+        verdict = 'unknown'
+
     return colorize(tag['tag']['name'], get_verdict_color(verdict))
 
 
