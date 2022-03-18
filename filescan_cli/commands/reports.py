@@ -12,7 +12,7 @@ def reports():
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
 @aclick.option('--page', type=int, is_flag=False, default=1, help='Page number')
 @aclick.option('--page-size', type=int, is_flag=False, default=10, help='Page size')
-async def get_reports(config: str, page: int, page_size: int):
+async def get_reports(config, page, page_size):
     """Get reports"""
 
     load_config(config)

@@ -1,6 +1,5 @@
 import os
 import json
-from typing import Optional
 from filescan_cli.core.http import HttpRequests
 from filescan_cli.common.utils import run_safe
 from filescan_cli.service.endpoints import get_endpoint, FILE_SCAN
@@ -15,16 +14,7 @@ class Scan():
         self.headers = get_private_header()
 
 
-    async def upload(
-        self,
-        file: Optional[str],
-        link: Optional[str],
-        desc: str,
-        tags: str,
-        prop_tags: bool,
-        password: str,
-        is_private: bool
-    ):
+    async def upload(self, file, link, desc, tags, prop_tags, password, is_private):
         """Upload a file for scanning"""
 
         if file:

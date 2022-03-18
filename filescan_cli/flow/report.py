@@ -1,5 +1,4 @@
 import aiofiles
-from typing import Dict, Tuple
 from halo import Halo
 from filescan_cli.core.logger import Logger
 from filescan_cli.formatter.report import ReportFormatter
@@ -13,7 +12,7 @@ class ReportFlow:
         self.formatter = ReportFormatter()
 
 
-    async def get_report(self, id: str, hash: str, filters: Tuple, sorts: Tuple, graph: bool) -> Dict:
+    async def get_report(self, id, hash, filters, sorts, graph):
 
         spinner = Halo(text=f'Fetching a report ... ', placement='right')
         spinner.start()
@@ -24,7 +23,7 @@ class ReportFlow:
             spinner.fail(result['error'])
             return
 
-        reports: Dict = result['content']['reports']
+        reports = result['content']['reports']
         flow_id = report['flowId'] if 'flowId' in report else ''
         if len(reports.keys()) != 1:
             spinner.fail()
@@ -42,7 +41,7 @@ class ReportFlow:
         self.logger.debug(self.formatter.format(report))
 
 
-    async def get_formatted_report(self, report_id: str, format: str, output):
+    async def get_formatted_report(self, report_id, format, output):
 
         spinner = Halo(text=f'Getting {format}-formatted report ... ', placement='right')
         spinner.start()

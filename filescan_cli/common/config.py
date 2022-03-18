@@ -1,6 +1,5 @@
 import os
 import json
-from typing import Optional
 from filescan_cli.core.logger import Logger
 
 FILE_READ_BLOCK_SIZE = 5242880  # 5M
@@ -9,7 +8,7 @@ API_KEY = os.environ.get('API_KEY', '')
 SERVICE_BASE_URL = os.environ.get('SERVICE_BASE_URL', 'https://filescan.io')
 
 
-def load_config(conf: Optional[str] = None):
+def load_config(conf = None):
     if not conf:
         return
 

@@ -11,13 +11,13 @@ class File():
         pass
 
 
-    async def open(self, path: str, mode: str):
+    async def open(self, path, mode):
         """Open a file"""
 
         return aiofiles.open(path, mode)
 
 
-    async def streamer(self, path: str, mode: str):
+    async def streamer(self, path, mode):
         """Async iterator for file streaming"""
 
         if not await self.file_exists(path):
@@ -31,7 +31,7 @@ class File():
                 chunk = await reader.read(FILE_READ_BLOCK_SIZE)
 
 
-    async def file_exists(self, path: str) -> bool:
+    async def file_exists(self, path):
         """Check if a give path exist"""
 
         return await run_async(os.path.exists, path)

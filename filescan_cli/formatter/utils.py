@@ -1,4 +1,3 @@
-from typing import Dict, List
 import math
 import re
 from filescan_cli.common.colors import colorize, get_verdict_color
@@ -6,11 +5,11 @@ from filescan_cli.common.colors import colorize, get_verdict_color
 
 MAX_LINE_SIZE = 64
 
-def captialize_key(key: str) -> str:
+def captialize_key(key):
     return ' '.join(map(lambda substr: substr.capitalize(), key.split('_')))
 
 
-def format_dict(dict: Dict, *, depth = 0, eol = '\n') -> str:
+def format_dict(dict, *, depth = 0, eol = '\n'):
 
     result = ''
     for key in dict:
@@ -28,25 +27,25 @@ def format_dict(dict: Dict, *, depth = 0, eol = '\n') -> str:
     return result + eol
 
 
-def format_verdict(verdict: str) -> str:
+def format_verdict(verdict):
     return colorize(verdict, get_verdict_color(verdict))
 
 
-def format_tag(tag: Dict) -> str:
+def format_tag(tag):
     verdict = tag['tag']['verdict']['verdict']
     return colorize(tag['tag']['name'], get_verdict_color(verdict))
 
 
-def format_tags(tags: List) -> str:
+def format_tags(tags):
     return ', '.join([format_tag(tag) for tag in tags])
 
 
-def format_size(size: int) -> str:
+def format_size(size):
     idx = math.floor(math.log(size) / math.log(1024))
     return "{:.2f}".format(size / math.pow(1024, idx)) + ['B', 'kB', 'MB', 'GB', 'TB'][idx]
 
 
-def format_string(text: str, max: int = MAX_LINE_SIZE) -> str:
+def format_string(text, max = MAX_LINE_SIZE):
     text = re.sub(' *\n+ *', ' ', text.strip())
     if len(text) > (max + 10):
         return text[:max] + '...'

@@ -1,4 +1,3 @@
-from typing import Dict
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.common.colors import colorize
 from filescan_cli.formatter.types.osint_types import ResourceTypes
@@ -11,7 +10,7 @@ class OsintFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
         resource = self._get_resource(report, 'osint')
 
         if resource is None or 'results' not in resource:

@@ -10,7 +10,7 @@ def system():
 
 @system.command('sysinfo', short_help='Get system information')
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
-async def sysinfo(config: str):
+async def sysinfo(config):
 
     load_config(config)
 
@@ -20,7 +20,7 @@ async def sysinfo(config: str):
 
 @system.command('sysconfig', short_help='Get system configuration')
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
-async def sysconfig(config: str):
+async def sysconfig(config):
 
     load_config(config)
 

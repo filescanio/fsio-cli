@@ -11,7 +11,7 @@ class FileFlow:
         self.logger = Logger()
 
 
-    async def get_file(self, hash: str, password: str, output: str) -> Dict:
+    async def get_file(self, hash, password, output):
 
         spinner = Halo(text=f'Downloading a file ... ', placement='right')
         spinner.start()

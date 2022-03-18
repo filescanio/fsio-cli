@@ -8,7 +8,7 @@ class ReportsFormatter:
     def __init__(self):
         pass
 
-    def format(self, reports: list, total = -1) -> str:
+    def format(self, reports, total = -1):
 
         result = f'''
             Total Count: {total}
@@ -20,7 +20,7 @@ class ReportsFormatter:
         return result
 
 
-    def __format_report(self, report: Dict) -> str:
+    def __format_report(self, report):
 
         type = report['file']['short_type'] if 'short_type' in report['file'] else report['file']['type']
         tags = report['tags'] if 'tags' in report else report['allTags']

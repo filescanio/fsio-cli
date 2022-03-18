@@ -1,4 +1,3 @@
-from typing import Dict
 from filescan_cli.formatter.features.base import BaseFormatter
 
 
@@ -8,6 +7,6 @@ class DefaultDetailsFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
         
         pass

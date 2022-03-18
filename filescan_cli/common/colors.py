@@ -8,7 +8,7 @@ colors = {
 }
 
 
-def get_verdict_color(verdict: str) -> str:
+def get_verdict_color(verdict):
 	verdict = verdict.lower()
 	if verdict in colors:
 		return colors[verdict]
@@ -16,5 +16,5 @@ def get_verdict_color(verdict: str) -> str:
 		return colorama.Fore.GREEN
 
 
-def colorize(text: str, color: str = colorama.Fore.GREEN) -> str:
+def colorize(text, color = colorama.Fore.GREEN):
 	return color + text + colorama.Fore.WHITE

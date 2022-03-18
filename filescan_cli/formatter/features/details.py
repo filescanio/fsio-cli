@@ -1,4 +1,3 @@
-from typing import Dict, List
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.formatter.features.pe_details import PeFormatter
 from filescan_cli.formatter.features.elf_details import ElfFormatter
@@ -13,7 +12,7 @@ class DetailsFormatter(BaseFormatter):
 
     def __init__(self):
         super().__init__()
-        self.formatters: List[BaseFormatter] = [
+        self.formatters = [
             PeFormatter(),
             ElfFormatter(),
             LnkFormatter(),
@@ -24,7 +23,7 @@ class DetailsFormatter(BaseFormatter):
         ]
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
         
         for formatter in self.formatters:
             formatted = formatter.format(report)

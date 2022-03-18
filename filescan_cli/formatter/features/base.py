@@ -1,4 +1,3 @@
-from typing import Dict, List
 from filescan_cli.formatter.types.file_types import file_categories
 from filescan_cli.formatter.utils import format_size
 
@@ -9,11 +8,11 @@ class BaseFormatter:
         pass
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
         pass
 
 
-    def _get_details_overview(self, report: Dict) -> str:
+    def _get_details_overview(self, report):
         resource = self._get_resource(report, 'file')
 
         overview = {}
@@ -33,11 +32,11 @@ class BaseFormatter:
         return overview
 
 
-    def _get_resources(self, report: Dict) -> Dict:
+    def _get_resources(self, report):
         return report['resources'] if 'resources' in report else {}
 
 
-    def _get_resource(self, report: Dict, type: str) -> Dict:
+    def _get_resource(self, report, type):
         resources = self._get_resources(report)
         for key in resources:
             resource = resources[key]
@@ -49,17 +48,17 @@ class BaseFormatter:
                 return resource
 
 
-    def _get_extended_data(self, report: Dict) -> Dict:
+    def _get_extended_data(self, report):
         resource = self._get_resource(report, 'file')
         if 'extendedData' in resource:
             return resource['extendedData']
 
 
-    def _get_tags(self, report: Dict) -> List:
+    def _get_tags(self, report):
         return report['allTags'] if 'allTags' in report else []
 
 
-    def _get_short_type(self, report: Dict) -> str:
+    def _get_short_type(self, report):
         
         tags = self._get_tags(report)
         for tag in tags:

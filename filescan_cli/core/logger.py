@@ -22,37 +22,37 @@ class Logger(metaclass=Singleton):
             self.initialized = True
 
 
-    def exception(self, ex: Exception):
+    def exception(self, ex):
         """Log exceptions"""
 
         self.error(f'Error of type {type(ex).__name__} occurred. Arguments:\n{ex.message if "message" in ex.__dict__ else ex.__str__()}')
 
 
-    def error(self, message: str, end = '\n'):
+    def error(self, message, end = '\n'):
         """Log error message"""
 
         print(colorama.Fore.RED + message, end=end)
 
 
-    def warning(self, message: str, end = '\n'):
+    def warning(self, message, end = '\n'):
         """Log warning message"""
 
         print(colorama.Fore.YELLOW + message, end=end)
 
 
-    def success(self, message: str, end = '\n'):
+    def success(self, message, end = '\n'):
         """Log success message"""
 
         print(colorama.Fore.GREEN + message, end=end)
 
 
-    def debug(self, message: str, end = '\n'):
+    def debug(self, message, end = '\n'):
         """Log debug message"""
 
         print(colorama.Fore.WHITE + message, end=end)
 
 
-    def log(self, type: LogType, message: str, end = '\n'):
+    def log(self, type, message, end = '\n'):
         """Log custom color message"""
 
         method = self.__getattribute__(type)

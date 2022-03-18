@@ -1,4 +1,3 @@
-from typing import Dict
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.common.colors import colorize
 from filescan_cli.formatter.utils import format_verdict, format_dict
@@ -10,7 +9,7 @@ class YaraFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
         resource = self._get_resource(report, 'file')
 
         if 'yaraMatches' not in resource or not resource['yaraMatches']:
@@ -26,7 +25,7 @@ class YaraFormatter(BaseFormatter):
         return result
 
 
-    def __format_rule(self, rule: Dict) -> str:
+    def __format_rule(self, rule):
         header = rule['ruleName']
         if 'verdict' in rule and 'verdict' in rule['verdict']:
             verdict = rule["verdict"]["verdict"].lower()

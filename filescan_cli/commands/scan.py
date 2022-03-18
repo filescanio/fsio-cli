@@ -18,14 +18,14 @@ def scan():
 @aclick.option('--password', type=str, is_flag=False, default='', help='Custom password of the file to scan')
 @aclick.option('--private', type=bool, is_flag=True, default=False, help='Whether the file can be shared or not')
 async def upload(
-    config: str,
-    file: str,
-    link: str,
-    desc: str,
-    tags: str,
-    prop_tags: bool,
-    password: str,
-    private: bool
+    config,
+    file,
+    link,
+    desc,
+    tags,
+    prop_tags,
+    password,
+    private
 ):
 
     load_config(config)
