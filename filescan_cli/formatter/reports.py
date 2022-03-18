@@ -23,6 +23,7 @@ class ReportsFormatter:
     def __format_report(self, report):
 
         type = report['file']['short_type'] if 'short_type' in report['file'] else report['file']['type']
+        hash = report['file']['sha256'] if 'sha256' in report['file'] else report['file']['hash']
         tags = report['tags'] if 'tags' in report else report['allTags']
         date = report['updated_date'] if 'updated_date' in report else report['created_date']
         verdict = report['verdict'] if 'verdict' in report else report['finalVerdict']['verdict'].lower()
@@ -30,7 +31,7 @@ class ReportsFormatter:
             id: {report['id']}
             name: {colorize(report['file']['name'])}
             type: {type}
-            hash: {report['file']['hash']}
+            hash: {hash}
             verdict: {format_verdict(verdict)}
             tags: {' '.join([format_tag(tag) for tag in tags])}
             updated: {date}

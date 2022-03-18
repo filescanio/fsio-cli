@@ -24,7 +24,7 @@ class ReportFlow:
             return
 
         reports = result['content']['reports']
-        flow_id = report['flowId'] if 'flowId' in report else ''
+        flow_id = result['flowId'] if 'flowId' in result else ''
         if len(reports.keys()) != 1:
             spinner.fail()
             return
