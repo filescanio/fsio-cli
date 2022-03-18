@@ -12,7 +12,7 @@ def files():
 @aclick.option('--hash', type=str, required=True, is_flag=False, help='File hash to be downloaded')
 @aclick.option('--password', type=str, required=False, default='', help='Password used to encrypt the file')
 @aclick.option('--output', type=str, required=False, default='downloaded.zip', help='Output path')
-async def download_file(config: str, hash: str, password: str, output: str):
+async def download_file(config, hash, password, output):
 
     load_config(config)
 

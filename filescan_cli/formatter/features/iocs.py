@@ -1,4 +1,3 @@
-from typing import Dict
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.formatter.types.ioc_types import IOCTypes
 from filescan_cli.common.colors import colorize
@@ -11,7 +10,7 @@ class IOCFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
 
         resource = self._get_resource(report, 'file')
         result = f'''

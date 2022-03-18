@@ -1,4 +1,3 @@
-from typing import Dict
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.common.colors import colorize
 from filescan_cli.formatter.utils import format_dict
@@ -10,7 +9,7 @@ class PeFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
 
         if self._get_short_type(report) != 'pe':
             return ''
@@ -25,7 +24,7 @@ class PeFormatter(BaseFormatter):
         return result
 
 
-    def __format_overview(self, report: Dict) -> str:
+    def __format_overview(self, report):
         overview = self._get_details_overview(report)
         extended = self._get_extended_data(report)
 

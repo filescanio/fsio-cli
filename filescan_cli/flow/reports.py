@@ -13,7 +13,7 @@ class ReportsFlow:
         self.formatter = ReportsFormatter()
 
 
-    async def get_scan_reports(self, scan_id: str, filters: Tuple, sorts: Tuple, graph: bool) -> Dict:
+    async def get_scan_reports(self, scan_id, filters, sorts, graph):
 
         spinner = Halo(text=f'Fetching reports ... ', placement='right')
         spinner.start()
@@ -33,13 +33,13 @@ class ReportsFlow:
             spinner.fail('No data')
             return
 
-        reports: Dict = scan_report['reports']
+        reports = scan_report['reports']
         spinner.succeed()
 
         self.__view_reports(reports)
 
 
-    async def get_reports(self, page: int, size: int) -> List:
+    async def get_reports(self, page, size):
 
         spinner = Halo(text=f'Fetching reports ... ', placement='right')
         spinner.start()
@@ -55,7 +55,7 @@ class ReportsFlow:
         self.__view_reports(reports['content'])
 
 
-    async def search(self, params: Dict[str, str]) -> List:
+    async def search(self, params):
 
         spinner = Halo(text=f'Searching reports ... ', placement='right')
         spinner.start()

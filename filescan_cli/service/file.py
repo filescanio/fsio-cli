@@ -12,7 +12,7 @@ class File:
         self.headers = get_private_header()
 
 
-    async def get_file(self, hash: str, password: str):
+    async def get_file(self, hash, password):
         """Get reports from scan"""
 
         endpoint = get_endpoint(DOWNLOAD_FILE, file_hash=hash)

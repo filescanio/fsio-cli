@@ -1,7 +1,6 @@
 import aiohttp
 import asyncio
 import json
-from typing import Any, Dict
 from filescan_cli.common.singleton import Singleton
 
 
@@ -15,12 +14,7 @@ class HttpRequests(metaclass=Singleton):
         pass
 
 
-    async def post_file(
-        self,
-        url: str,
-        headers: Dict,
-        file_data: Dict
-    ):
+    async def post_file(self, url, headers, file_data):
         """Post file"""
 
         if "extra" in file_data:
@@ -74,14 +68,14 @@ class HttpRequests(metaclass=Singleton):
         return {"group": data["group_id"], "json": json}
 
 
-    async def get(self, url: str, headers: Dict, params = {}):
+    async def get(self, url, headers, params = {}):
         """Perform get request"""
 
         async with aiohttp.ClientSession(connector=self.__getConnector()) as session:
             return await self.__get(url, headers, params, session)
 
 
-    async def __get(self, url: str, headers: Dict, params: Any, session: aiohttp.ClientSession):
+    async def __get(self, url, headers, params, session):
         """Perform get request with provided session object"""
 
         async with session.get(url, headers=headers, params=params) as response:

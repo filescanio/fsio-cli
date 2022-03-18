@@ -7,7 +7,7 @@ You can use this simple and powerful cli tool to access to the filescan service.
 
 ## Usage
   
-  `python filescan.py [OPTIONS] COMMAND`
+  `filescan.py [OPTIONS] COMMAND`
 
 ## Commands
 
@@ -38,7 +38,7 @@ You can use this simple and powerful cli tool to access to the filescan service.
 You can see detailed options by running the command with --help option
 
 ```
-      python filescan.py export --help
+      filescan.py export --help
 ```
 
 ## Configuration
@@ -50,13 +50,13 @@ In order to run the cli commands, you need to set the api key and service url to
 Unix:
 ```
       export API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
-      export SERVICE_BASE_URL=https://www.filescan.i
+      export SERVICE_BASE_URL=https://www.filescan.io
 ```
 
 Windows:
 ```
       set API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
-      set SERVICE_BASE_URL=https://www.filescan.i
+      set SERVICE_BASE_URL=https://www.filescan.io
 ```
 
 2. You can pass the config file path with `--config` option to the command. The config file should be in json format.

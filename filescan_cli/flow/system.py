@@ -1,4 +1,3 @@
-from typing import Dict
 from halo import Halo
 from filescan_cli.core.logger import Logger
 from filescan_cli.service.system import System
@@ -32,7 +31,7 @@ class SystemFlow:
             self.show_result(result['content'])
 
 
-    def show_result(self, result: Dict):
+    def show_result(self, result):
 
         formatted = ''
         for key in result:

@@ -1,5 +1,4 @@
 import json
-from typing import Dict, List, Tuple
 from filescan_cli.core.http import HttpRequests
 from filescan_cli.common.utils import run_safe
 from filescan_cli.service.endpoints import GET_FORMATTED_REPORT, GET_SCAN_REPORTS, GET_SPECIFIC_REPORT, SEARCH_REPORT, get_endpoint, GET_REPORTS
@@ -27,9 +26,7 @@ class Report:
         self.headers = get_private_header()
 
 
-    async def get_scan_reports(
-        self, scan_id: str, filters: Tuple = (), sorts: Tuple = (), graph: bool = False
-    ) -> Dict:
+    async def get_scan_reports(self, scan_id, filters = (), sorts = (), graph = False):
         """Get reports from scan"""
 
         endpoint = get_endpoint(GET_SCAN_REPORTS, scan_id=scan_id)
@@ -53,7 +50,7 @@ class Report:
             return { 'error': result['content'] }
 
 
-    async def get_reports(self, page: int, page_size: int) -> List:
+    async def get_reports(self, page, page_size):
         """Get reports"""
 
         endpoint = get_endpoint(GET_REPORTS)
@@ -74,9 +71,7 @@ class Report:
             return { 'error': result['content'] }
 
 
-    async def get_report(
-        self, id: str, hash: str, filters: Tuple = (), sorts: Tuple = (), graph: bool = False
-    ) -> Dict:
+    async def get_report(self, id, hash, filters = (), sorts = (), graph = False):
         """Get a specific report"""
 
         endpoint = get_endpoint(GET_SPECIFIC_REPORT, report_id=id, file_hash=hash)
@@ -97,7 +92,7 @@ class Report:
             return { 'error': result['content'] }
 
 
-    async def search_reports(self, params: Dict) -> List:
+    async def search_reports(self, params):
         """Search reports"""
 
         endpoint = get_endpoint(SEARCH_REPORT)
@@ -118,7 +113,7 @@ class Report:
             return { 'error': result['content'] }
 
 
-    async def download_report(self, report_id: str, format: str):
+    async def download_report(self, report_id, format):
         """Download a formatted report"""
 
         endpoint = get_endpoint(GET_FORMATTED_REPORT, report_id=report_id)

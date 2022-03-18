@@ -1,5 +1,4 @@
 import asyncio
-from typing import Optional, Dict
 from halo import Halo
 from filescan_cli.core.logger import Logger
 from filescan_cli.service.scan import Scan
@@ -19,13 +18,13 @@ class ScanFlow:
 
     async def run(
         self,
-        file: Optional[str],
-        link: Optional[str],
-        desc: str,
-        tags: str,
-        prop_tags: bool,
-        password: str,
-        is_private: bool
+        file,
+        link,
+        desc,
+        tags,
+        prop_tags,
+        password,
+        is_private
     ):
         """Upload a file or link and receive its report"""
 
@@ -37,16 +36,7 @@ class ScanFlow:
         self.logger.debug(self.formatter.format(reports))
 
 
-    async def __upload(
-        self,
-        file: Optional[str],
-        link: Optional[str],
-        desc: str,
-        tags: str,
-        prop_tags: bool,
-        password: str,
-        is_private: bool
-    ) -> str:
+    async def __upload(self, file, link, desc, tags, prop_tags, password, is_private):
 
         spinner = Halo(text=f'Uploading a file {file} ... ', spinner='dots', placement='right')
         spinner.start()
@@ -67,10 +57,10 @@ class ScanFlow:
         return response['flow_id']
 
 
-    async def __get_scan_reports(self, scan_id: str) -> Dict:
+    async def __get_scan_reports(self, scan_id):
         """Get reports related to scan"""
 
-        spinners: Dict[str, Halo] = {}
+        spinners = {}
         spinners['main'] = Halo(text=f'Fetching reports ... ', placement='right')
         spinners['main'].start()
 
@@ -86,7 +76,7 @@ class ScanFlow:
             if 'reports' not in scan_report or not scan_report['reports']:
                 continue
 
-            reports: Dict = scan_report['reports']
+            reports = scan_report['reports']
             report_ids = reports.keys()
             for id in report_ids:
                 if id not in spinners:

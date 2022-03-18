@@ -22,13 +22,13 @@ File hash the report contains. Must be given when id is specified
 @aclick.option('-s', '--sorts', type=str, is_flag=False, multiple=True, default=[], help='Sorting that apply to the report')
 @aclick.option('-g', '--graph', type=bool, is_flag=True, default=False, help='Whether get emulation graph or not')
 async def get_report(
-    config: str,
-    flow: str,
-    id: str,
-    hash: str,
-    filters: list[str],
-    sorts: list[str],
-    graph: bool
+    config,
+    flow,
+    id,
+    hash,
+    filters,
+    sorts,
+    graph
 ):
 
     load_config(config)
@@ -46,7 +46,7 @@ async def get_report(
 @aclick.option('--id', type=str, required=True, help='Report id to be exported')
 @aclick.option('--format', required=True, type=aclick.Choice(['misp', 'stix', 'html', 'pdf'], case_sensitive=True), default='misp', help='Export format')
 @aclick.option('--output', '-o', type=str, is_flag=False, default='report.out', help='Output path where report is saved')
-async def export_report(config:str, id: str, format: str, output: str):
+async def export_report(config, id, format, output):
 
     load_config(config)
 

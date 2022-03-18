@@ -1,5 +1,4 @@
 import re
-from typing import Dict, List, Any
 from filescan_cli.common.colors import colorize, get_verdict_color
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.formatter.utils import format_dict
@@ -11,8 +10,8 @@ class OverviewFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
-        submission_info: Dict[str, Any] = self.__format_submission_info(report)
+    def format(self, report):
+        submission_info = self.__format_submission_info(report)
         result = f'''
         {colorize('Overview')}
         '''
@@ -26,16 +25,16 @@ class OverviewFormatter(BaseFormatter):
         return result
 
 
-    def __format_submission_info(self, report: Dict) -> str:
+    def __format_submission_info(self, report):
 
         result = f'''
             Submission Info'''
 
-        submission_info: Dict[str, Any] = self.__get_submission_info(report)
+        submission_info = self.__get_submission_info(report)
         return result + format_dict(submission_info)
 
 
-    def __format_verdict_level(self, verdict: Dict) -> str:
+    def __format_verdict_level(self, verdict):
         level = f' / {int(verdict["confidence"] * 100)}%'
         verdict = verdict['verdict']
         return f'''
@@ -43,7 +42,7 @@ class OverviewFormatter(BaseFormatter):
         '''
 
 
-    def __format_tags(self, report: Dict) -> str:
+    def __format_tags(self, report):
 
         if 'allTags' not in report:
             return ''
@@ -53,16 +52,16 @@ class OverviewFormatter(BaseFormatter):
             Tags: ''' + ', '.join([self.__format_tag(tag) for tag in tags]) + '\n'
 
 
-    def __format_signals(self, report: Dict) -> str:
+    def __format_signals(self, report):
 
         if 'allSignalGroups' not in report or len(report['allSignalGroups']) == 0:
             return ''
 
-        def get_key(signal: Dict):
+        def get_key(signal):
             threat_level = signal['verdict']['threatLevel'] if 'verdict' in signal and 'threatLevel' in signal['verdict'] else ''
             return 1 - threat_level
 
-        signal_groups: List = report['allSignalGroups']
+        signal_groups = report['allSignalGroups']
         signal_groups.sort(key=get_key)
 
         result = ''
@@ -110,7 +109,7 @@ class OverviewFormatter(BaseFormatter):
         return result
 
 
-    def __format_tag(self, tag: Dict) -> str:
+    def __format_tag(self, tag):
         if 'tag' in tag and 'verdict' in tag['tag']:
             verdict = tag['tag']['verdict']['verdict']
             return colorize(tag['tag']['name'], get_verdict_color(verdict))
@@ -118,7 +117,7 @@ class OverviewFormatter(BaseFormatter):
             return tag['tag']['name']
 
 
-    def __get_submission_info(self, report: Dict) -> Dict:
+    def __get_submission_info(self, report):
         
         submission_info = { 'report_id': report['id'] }
 
@@ -146,11 +145,11 @@ class OverviewFormatter(BaseFormatter):
         return submission_info
 
 
-    def __get_resources(self, report: Dict) -> Dict:
+    def __get_resources(self, report):
         return report['resources'] if 'resources' in report else {}
 
 
-    def __get_resource(self, report: Dict, type: str) -> Dict:
+    def __get_resource(self, report, type):
         resources = self.__get_resources(report)
         for key in resources:
             resource = resources[key]

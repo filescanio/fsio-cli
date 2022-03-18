@@ -10,7 +10,7 @@ class FilesFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
         resource = self._get_resource(report, 'file')
 
         if 'extractedFiles' not in resource or not resource['extractedFiles']:
@@ -27,7 +27,7 @@ class FilesFormatter(BaseFormatter):
         return result + '\n'
 
 
-    def __format_file(self, file: Dict) -> str:
+    def __format_file(self, file):
         overview = {}
         name = file['submitName'] if 'submitName' in file else ''
         if 'extendedData' in file and 'fileMagicDescription' in file['extendedData']:

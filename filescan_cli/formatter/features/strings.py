@@ -1,4 +1,3 @@
-from typing import Dict
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.common.colors import colorize
 from filescan_cli.formatter.utils import captialize_key, format_string
@@ -10,7 +9,7 @@ class StringsFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
         resource = self._get_resource(report, 'file')
 
         if 'strings' not in resource or not resource['strings']:

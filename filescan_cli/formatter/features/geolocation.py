@@ -1,4 +1,3 @@
-from typing import Dict
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.common.colors import colorize
 from filescan_cli.formatter.utils import format_dict
@@ -10,7 +9,7 @@ class GeoFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
         resource = self._get_resource(report, 'domain-resolve')
         if not resource or 'domainResolveResults' not in resource:
             return ''

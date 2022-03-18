@@ -15,7 +15,7 @@ SYSTEM_INFO = '/api/system/info'
 SYSTEM_CONFIG = '/api/system/config'
 
 
-def get_endpoint(ep: str, **kwargs) -> str:
+def get_endpoint(ep, **kwargs):
 
     result = ep
     for key in kwargs:

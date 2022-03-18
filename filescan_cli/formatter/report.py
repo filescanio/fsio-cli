@@ -1,5 +1,3 @@
-from typing import Dict, List
-from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.formatter.features.overview import OverviewFormatter
 from filescan_cli.formatter.features.details import DetailsFormatter
 from filescan_cli.formatter.features.emulation import EmulationFormatter
@@ -15,7 +13,7 @@ from filescan_cli.formatter.features.geolocation import GeoFormatter
 class ReportFormatter:
 
     def __init__(self):
-        self.formatters: List[BaseFormatter] = [
+        self.formatters = [
             OverviewFormatter(),
             DetailsFormatter(),
             EmulationFormatter(),
@@ -29,7 +27,7 @@ class ReportFormatter:
         ]
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
 
         result = ''
         for formatter in self.formatters:

@@ -1,4 +1,3 @@
-from typing import Dict
 from filescan_cli.formatter.features.base import BaseFormatter
 from filescan_cli.common.colors import colorize
 from filescan_cli.formatter.utils import format_dict
@@ -10,7 +9,7 @@ class EmulationFormatter(BaseFormatter):
         super().__init__()
 
 
-    def format(self, report: Dict) -> str:
+    def format(self, report):
 
         resource = self._get_resource(report, 'file')
         if 'emulationData' not in resource:
@@ -28,7 +27,7 @@ class EmulationFormatter(BaseFormatter):
         return result
 
 
-    def __format_meta(self, report: Dict) -> str:
+    def __format_meta(self, report):
         resource = self._get_resource(report, 'file')
         if 'emulationMetaData' not in resource:
             return ''
@@ -79,7 +78,7 @@ class EmulationFormatter(BaseFormatter):
         return result
 
 
-    def __format_data(self, report) -> str:
+    def __format_data(self, report):
         resource = self._get_resource(report, 'file')
         data = resource['emulationData']
 
@@ -148,10 +147,10 @@ class EmulationFormatter(BaseFormatter):
         return result
 
 
-    def __split_api(self, arg: str) -> str:
+    def __split_api(self, arg):
         argList = []
         if arg.find('(VbValue ') >= 0:
-            strArguments: list[str] = filter(lambda item: item, arg.split('(VbValue '))
+            strArguments = filter(lambda item: item, arg.split('(VbValue '))
             for idx in range(len(strArguments)):
                 value = strArguments[idx]
                 if idx >= len(strArguments) - 1:
@@ -162,7 +161,7 @@ class EmulationFormatter(BaseFormatter):
                 pair = value.split(' ')
                 argList.append({ 'name': pair[0], 'value': pair[1] })
         else:
-            strArguments: list[str] = filter(lambda item: item, arg.split(', '))
+            strArguments = filter(lambda item: item, arg.split(', '))
             for value in strArguments:
                 if value.find('=') > 0:
                     pair = value.split('=')

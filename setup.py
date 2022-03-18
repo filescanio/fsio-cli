@@ -47,12 +47,11 @@ setup(
         "textwrap3==0.9.2",
         "toml==0.10.2",
         "urllib3==1.26.8",
-        "windows-curses==2.3.0",
         "yarl==1.7.2",
         "halo @ git+https://github.com/frostming/halo.git@multiple-spinners"
     ],
     packages=find_packages(),
     package_dir={"": "."},
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     scripts=["filescan.py"]
 )
