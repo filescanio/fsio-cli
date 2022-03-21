@@ -11,7 +11,7 @@ def files():
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
 @aclick.option('--hash', type=str, required=True, is_flag=False, help='File hash to be downloaded')
 @aclick.option('--password', type=str, required=False, default='', help='Password used to encrypt the file')
-@aclick.option('--output', type=str, required=False, default='downloaded.zip', help='Output path')
+@aclick.option('--output', type=str, required=False, is_flag=False, default='downloaded.zip', help='Output path')
 async def download_file(config, hash, password, output):
 
     load_config(config)

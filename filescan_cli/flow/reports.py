@@ -13,7 +13,7 @@ class ReportsFlow:
         self.formatter = ReportsFormatter()
 
 
-    async def get_scan_reports(self, scan_id, filters, sorts, graph):
+    async def get_scan_reports(self, scan_id, filters = None, sorts = None, graph = None):
 
         spinner = Halo(text=f'Fetching reports ... ', placement='right')
         spinner.start()

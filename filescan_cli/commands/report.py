@@ -9,13 +9,12 @@ def report():
     pass
 
 
-@report.command('report', short_help='Get reports or report related to scan or id')
+@report.command('report', short_help='Get reports or report related to the report id and file hash')
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
-@aclick.option('--flow', type=str, is_flag=False, default='', help='Flow id')
-@aclick.option('--id', type=str, is_flag=False, default='', help='''
+@aclick.option('--id', type=str, required=True, is_flag=False, help='''
 Report id: Must be given when flow option is absent, or will be ignored
 ''')
-@aclick.option('--hash', type=str, is_flag=False, default='', help='''
+@aclick.option('--hash', type=str, required=True, is_flag=False, help='''
 File hash the report contains. Must be given when id is specified
 ''')
 @aclick.option('-f', '--filters', type=str, is_flag=False, multiple=True, default=[], help='Filters that apply to the report')
@@ -23,7 +22,6 @@ File hash the report contains. Must be given when id is specified
 @aclick.option('-g', '--graph', type=bool, is_flag=True, default=False, help='Whether get emulation graph or not')
 async def get_report(
     config,
-    flow,
     id,
     hash,
     filters,
@@ -33,12 +31,19 @@ async def get_report(
 
     load_config(config)
 
-    if flow:
-        reports_flow = ReportsFlow()
-        await reports_flow.get_scan_reports(flow, filters, sorts, graph)
-    elif id and hash:
-        report_flow = ReportFlow()
-        await report_flow.get_report(id, hash, filters, sorts, graph)
+    report_flow = ReportFlow()
+    await report_flow.get_report(id, hash, filters, sorts, graph)
+
+
+@report.command('scan_reports', short_help='Get reports or report related to scan')
+@aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
+@aclick.option('--flow', type=str, required=True, is_flag=False, help='Flow id')
+async def get_report(config, flow):
+
+    load_config(config)
+
+    reports_flow = ReportsFlow()
+    await reports_flow.get_scan_reports(flow)
 
 
 @report.command('export', short_help='Export report in the given format')

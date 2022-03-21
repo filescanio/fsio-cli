@@ -12,7 +12,7 @@ def system():
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
 async def sysinfo(config):
 
-    load_config(config)
+    load_config(config, key_required=False)
 
     system_flow = SystemFlow()
     await system_flow.get_info()
@@ -22,7 +22,7 @@ async def sysinfo(config):
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
 async def sysconfig(config):
 
-    load_config(config)
+    load_config(config, key_required=False)
 
     system_flow = SystemFlow()
     await system_flow.get_config()
