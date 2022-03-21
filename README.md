@@ -6,13 +6,21 @@ You can use this simple and powerful cli tool to access to the filescan service.
   `pip install filscan_cli`
 
 ## Usage
-  
-  `filescan.py [OPTIONS] COMMAND`
+
+```
+  python filescan.py COMMAND [OPTIONS]
+```
 
 ## Commands
 
+-  `config`
+  : Set global configurations
+
 -  `upload`
   : Upload a file
+
+-  `upload_link`
+  : Upload a link
 
 -  `export`
   : Export a report in the given format
@@ -21,7 +29,10 @@ You can use this simple and powerful cli tool to access to the filescan service.
   : Download a file
 
 -  `report`
-  : Get a report or reports from a scan
+  : Get a report with report id and file hash
+
+-  `scan_reports`
+  : Get reports from a scan
 
 -  `reports`
   : Get reports summary
@@ -43,7 +54,7 @@ You can see detailed options by running the command with --help option
 
 ## Configuration
 
-In order to run the cli commands, you need to set the api key and service url to access. There are two options.
+In order to run the cli commands, you need to set the api key and service url to access. There are three options.
 
 1. You can set the environment variables
 
@@ -74,4 +85,9 @@ Example json format
       }
 ```
 
-  
+3. You can set the configuration values using `config` command.
+```
+      python filescan.py config [OPTIONS]
+```
+
+You can see detailed options by running the command with --help option
