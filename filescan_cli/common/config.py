@@ -14,20 +14,21 @@ def load_config(path = None, key_required = True):
     if not config_path:
         config_path = prepare_store_path()
 
-    with open(config_path, 'r') as reader:
-        try:
-            global API_KEY, SERVICE_BASE_URL
-            config = json.load(reader)
-            if 'API_KEY' in config:
-                API_KEY = config['API_KEY']
-            if 'SERVICE_BASE_URL' in config and config['SERVICE_BASE_URL']:
-                SERVICE_BASE_URL = config['SERVICE_BASE_URL']
+    if os.path.exists(config_path):
+        with open(config_path, 'r') as reader:
+            try:
+                global API_KEY, SERVICE_BASE_URL
+                config = json.load(reader)
+                if 'API_KEY' in config:
+                    API_KEY = config['API_KEY']
+                if 'SERVICE_BASE_URL' in config and config['SERVICE_BASE_URL']:
+                    SERVICE_BASE_URL = config['SERVICE_BASE_URL']
 
-            if path:
-                save_config()
+                if path:
+                    save_config()
 
-        except Exception as ex:
-            Logger().exception(ex)
+            except Exception as ex:
+                Logger().exception(ex)
 
 
     if key_required:
