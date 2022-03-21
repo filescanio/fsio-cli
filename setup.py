@@ -5,9 +5,9 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="filescan_cli",
     version="1.0.0",
-    description="Cli client for Filescan service",
-    author="Andrii Naidenko",
-    author_email="shlerp11@gmail.com",
+    description="CLI client for Filescan service",
+    author="FileScan GmbH",
+    author_email="support@filescan.com",
     include_package_data=True,
     long_description=long_description,
     long_description_content_type="text/markdown",
