@@ -8,7 +8,7 @@ def scan():
     pass
 
 
-@scan.command('upload', short_help='upload a file')
+@scan.command('upload', short_help='Upload a file')
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
 @aclick.option('-f', '--file', type=str, required=True, help='File path to scan')
 @aclick.option('-d', '--desc', type=str, is_flag=False, default='', help='Additional description of the file')
