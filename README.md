@@ -5,7 +5,7 @@ You can use this simple and powerful cli tool to access to the filescan service.
 
   `pip install filscan_cli`
 
-## Usage
+## General Usage
 
 ```
   python filescan.py COMMAND [OPTIONS]
@@ -56,7 +56,35 @@ You can see detailed options by running the command with --help option
 
 In order to run the cli commands, you need to set the api key and service url to access. There are three options.
 
-1. You can set the environment variables
+a. You can set the configuration values using `config` command.
+```
+      python filescan.py config [OPTIONS]
+```
+
+Example:
+
+```
+      python filescan.py config -x <API_KEY>
+```
+
+You can see detailed options by running the command with --help option
+
+b. Alternatively, you can pass a JSON config file using the `--config` option.
+
+```
+      python filescan.py --config ./config.json
+```
+
+Example JSON format:
+
+```
+      {
+        "API_KEY": "cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22",
+        "SERVICE_BASE_URL": "https://www.filescan.io"
+      }
+```
+
+c. Alternatively, you can set environment variables
 
 Unix:
 ```
@@ -69,25 +97,3 @@ Windows:
       set API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
       set SERVICE_BASE_URL=https://www.filescan.io
 ```
-
-2. You can pass the config file path with `--config` option to the command. The config file should be in json format.
-
-```
-      python filescan.py --config ./config.json
-```
-
-Example json format
-
-```
-      {
-        "API_KEY": "cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22",
-        "SERVICE_BASE_URL": "https://www.filescan.io"
-      }
-```
-
-3. You can set the configuration values using `config` command.
-```
-      python filescan.py config [OPTIONS]
-```
-
-You can see detailed options by running the command with --help option
