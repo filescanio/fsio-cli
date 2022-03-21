@@ -32,7 +32,7 @@ async def upload(
     await scan_flow.run(file, None, desc, tags, prop_tags, password, private)
 
 
-@scan.command('upload_link', short_help='upload a link')
+@scan.command('upload_link', short_help='Upload a link')
 @aclick.option('--config', type=str, is_flag=False, default='', help='Path to the config file')
 @aclick.option('-l', '--link', type=str, required=True, is_flag=False, help='Link URL to scan. One of the link or file must be valid.')
 @aclick.option('-d', '--desc', type=str, is_flag=False, default='', help='Additional description of the file')
