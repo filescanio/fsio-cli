@@ -97,3 +97,7 @@ Windows:
       set API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
       set SERVICE_BASE_URL=https://www.filescan.io
 ```
+
+Example CLI Output
+
+![image](https://user-images.githubusercontent.com/20181242/159781337-0f8a84c4-8a6b-40f9-a7f9-cb7acd5efc9c.png)
