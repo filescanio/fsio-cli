@@ -3,7 +3,9 @@ You can use this simple and powerful cli tool to access to the filescan service.
 
 ## Installation
 
-  `pip install filscan_cli`
+```
+pip install filscan_cli`
+```
 
 ## Initial Configuration
 
@@ -23,7 +25,7 @@ More information regarding the `config` command:
 ## General Usage
 
 ```
-  python filescan.py COMMAND [OPTIONS]
+      python filescan.py COMMAND [OPTIONS]
 ```
 
 ## Commands
