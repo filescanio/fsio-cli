@@ -71,7 +71,7 @@ You can see detailed options by running the command with --help option
 
 ## Example CLI Output
 
-<img src="https://user-images.githubusercontent.com/20181242/159781500-e59f6b57-e533-4f35-906a-f216a09620be.png" width="300">
+<img src="https://user-images.githubusercontent.com/20181242/159781500-e59f6b57-e533-4f35-906a-f216a09620be.png" width="600">
 
 ## Alternative Configuration
 
