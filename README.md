@@ -5,6 +5,21 @@ You can use this simple and powerful cli tool to access to the filescan service.
 
   `pip install filscan_cli`
 
+## Initial Configuration
+
+In order to run CLI commands, you need to provide your API key and (optionally) webservice url.
+
+The easiest way to provide the API key is to store it using the config command. Please generate an API key in your profile settings page (e.g. https://www.filescan.io/users/profile) and run the following command:
+
+```
+      python filescan.py config -x <API_KEY>
+```
+
+More information regarding the `config` command:
+```
+      python filescan.py config --help
+```
+
 ## General Usage
 
 ```
@@ -50,21 +65,6 @@ You can see detailed options by running the command with --help option
 
 ```
       filescan.py export --help
-```
-
-## Configuration
-
-In order to run the cli commands, you need to store your API key and (optionally) service url. There is multiple ways to do this (see 'Alternative Configuration' below for additional options).
-
-In general, you can set the configuration values using the `config` command.
-```
-      python filescan.py config [OPTIONS]
-```
-
-Example using filescan.io as your default service endpoint:
-
-```
-      python filescan.py config -x <API_KEY>
 ```
 
 ## Example CLI Output
