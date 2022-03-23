@@ -54,22 +54,26 @@ You can see detailed options by running the command with --help option
 
 ## Configuration
 
-In order to run the cli commands, you need to set the api key and service url to access. There are three options.
+In order to run the cli commands, you need to store your API key and (optionally) service url. There is multiple ways to do this (see 'Alternative Configuration' below for additional options).
 
-a. You can set the configuration values using `config` command.
+In general, you can set the configuration values using the `config` command.
 ```
       python filescan.py config [OPTIONS]
 ```
 
-Example:
+Example using filescan.io as your default service endpoint:
 
 ```
       python filescan.py config -x <API_KEY>
 ```
 
-You can see detailed options by running the command with --help option
+## Example CLI Output
 
-b. Alternatively, you can pass a JSON config file using the `--config` option.
+![image](https://user-images.githubusercontent.com/20181242/159781500-e59f6b57-e533-4f35-906a-f216a09620be.png)
+
+## Alternative Configuration
+
+You can pass a JSON config file using the `--config` option.
 
 ```
       python filescan.py --config ./config.json
@@ -84,7 +88,7 @@ Example JSON format:
       }
 ```
 
-c. Alternatively, you can set environment variables
+Alternatively, you can set environment variables
 
 Unix:
 ```
@@ -97,7 +101,3 @@ Windows:
       set API_KEY=cI3qhN1WewKw_JP_HiRiongypdZxg4TkJNiB-X22
       set SERVICE_BASE_URL=https://www.filescan.io
 ```
-
-Example CLI Output
-
-![image](https://user-images.githubusercontent.com/20181242/159781500-e59f6b57-e533-4f35-906a-f216a09620be.png)
