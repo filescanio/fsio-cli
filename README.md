@@ -100,4 +100,4 @@ Windows:
 
 Example CLI Output
 
-![image](https://user-images.githubusercontent.com/20181242/159781458-899f952e-4ba4-4dbf-bbc4-71cf983cbc80.png)
+![image](https://user-images.githubusercontent.com/20181242/159781500-e59f6b57-e533-4f35-906a-f216a09620be.png)
