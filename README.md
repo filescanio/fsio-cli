@@ -4,13 +4,9 @@ You can use this simple and powerful cli tool to access to the filescan service.
 ## Installation
 
 ```
-      pip install filescan_cli
-```
-
-or
-
-```      
       pip install -r requirements.txt
+      python3 setup.py install
+      pip install filescan_cli
 ```
 
 ## Initial Configuration
