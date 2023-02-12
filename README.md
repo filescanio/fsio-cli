@@ -6,7 +6,18 @@ You can use this simple and powerful cli tool to access to the filescan service.
 ```
       pip install -r requirements.txt
       python3 setup.py install
+```
+
+Or optionally:
+
+```
       pip install filescan_cli
+```
+
+Note: on windows, the "windows-curses" dependency might need to be satisfied:
+
+```
+      pip install windows-curses
 ```
 
 ## Initial Configuration
