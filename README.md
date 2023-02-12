@@ -7,6 +7,12 @@ You can use this simple and powerful cli tool to access to the filescan service.
       pip install filescan_cli
 ```
 
+or
+
+```      
+      pip install -r requirements.txt
+```
+
 ## Initial Configuration
 
 In order to run CLI commands, you need to provide your API key and (optionally) webservice url.
