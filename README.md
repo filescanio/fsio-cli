@@ -5,7 +5,7 @@ You can use this simple and powerful cli tool to access to the filescan service.
 
 ```
       pip install -r requirements.txt
-      python3 setup.py install
+      python3 setup.py install --user
 ```
 
 Or optionally:
