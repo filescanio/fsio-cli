@@ -29,7 +29,7 @@ setup(
         "attrs==21.4.0",
         "autopep8==1.6.0",
         "blessings==1.7",
-        "certifi==2021.10.8",
+        "certifi==2022.12.7",
         "charset-normalizer==2.0.12",
         "colorama==0.4.4",
         "curtsies==0.3.10",
