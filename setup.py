@@ -19,7 +19,7 @@ setup(
     ],
     install_requires=[
         "aiofiles==0.8.0",
-        "aiohttp==3.8.1",
+        "aiohttp==3.10.11",
         "aiosignal==1.2.0",
         "ansiwrap==0.8.4",
         "anyio==3.5.0",
