@@ -46,7 +46,7 @@ setup(
         "termcolor==1.1.0",
         "textwrap3==0.9.2",
         "toml==0.10.2",
-        "urllib3==1.26.8",
+        "urllib3==2.5.0",
         "yarl==1.7.2",
         "halo @ git+https://github.com/frostming/halo.git@multiple-spinners"
     ],
